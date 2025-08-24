@@ -1,0 +1,22 @@
+.content {
+  height: 100vh;
+}
+
+.mat-sidenav {
+  width: 200px;
+  height: 100vh;
+  margin: 10px;
+  border-radius: 10px;
+}
+.mat-sidenav {
+  padding-right: 10px;
+  .mat-raised-button {
+    display: flex;
+    align-items: flex-start;
+    background-color: orange;
+    .mat-icon {
+      padding-right: 6px;
+    }
+    margin-bottom: 10px;
+  }
+}

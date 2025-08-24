@@ -1,0 +1,287 @@
+<div class="category">
+  <mat-card>
+    <div class="grid">
+      <div class="col-10">
+        <h1 align="start"><b>Manage Orders</b></h1>
+        <h4>You can create Orders from here</h4>
+      </div>
+      <div class="col-2">
+        <button mat-raised-button color="primary" [disabled]="orderForm.controls['name'].invalid || orderForm.controls['email'].invalid || orderForm.controls['contactNumber'].invalid || orderForm.controls['paymentMethod'].invalid || cartItems.length === 0
+        " (click)="onFormSubmit()">Add Order & Get Bill</button>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card>
+    <h1 align="start"><b>Customer Details</b></h1>
+    <form [formGroup]="orderForm">
+      <div class="grid">
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required="true" />
+            <mat-error
+              *ngIf="
+                orderForm.controls['name'].invalid &&
+                orderForm.controls['name'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['name'].errors &&
+                  orderForm.controls['name'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required="true" />
+            <mat-error
+              *ngIf="
+                orderForm.controls['email'].invalid &&
+                orderForm.controls['email'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['email'].errors &&
+                  orderForm.controls['email'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Contact Number</mat-label>
+            <span matPrefix style="font-size: 18px">+880 &nbsp;</span>
+            <input
+              type="tel"
+              matInput
+              formControlName="contactNumber"
+              required="true"
+              placeholder="1300000000"
+            />
+            <mat-error
+              *ngIf="
+                orderForm.controls['contactNumber'].invalid &&
+                orderForm.controls['contactNumber'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['contactNumber'].errors &&
+                  orderForm.controls['contactNumber'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Payment Method</mat-label>
+            <mat-select formControlName="paymentMethod">
+              <mat-option
+                *ngFor="let paymentMethod of paymentMethods"
+                [value]="paymentMethod"
+                >{{ paymentMethod }}</mat-option
+              >
+            </mat-select>
+
+            <mat-error
+              *ngIf="
+                orderForm.controls['paymentMethod'].invalid &&
+                orderForm.controls['paymentMethod'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['paymentMethod'].errors &&
+                  orderForm.controls['paymentMethod'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+  <mat-card>
+    <h1 align="start"><b>Customer Details</b></h1>
+    <form [formGroup]="orderForm">
+      <div class="grid">
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category._id"
+                (click)="getProductByCategory(category._id ? category._id : '')"
+                >{{ category.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error
+              *ngIf="
+                orderForm.controls['category'].invalid &&
+                orderForm.controls['category'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['category'].errors &&
+                  orderForm.controls['category'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Product</mat-label>
+            <mat-select formControlName="product">
+              <mat-option
+                *ngFor="let product of products"
+                [value]="product._id"
+                (click)="setCartItem(product)"
+                >{{ product.name }}</mat-option
+              >
+            </mat-select>
+            <mat-error
+              *ngIf="
+                orderForm.controls['product'].invalid &&
+                orderForm.controls['product'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['product'].errors &&
+                  orderForm.controls['product'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Quantity</mat-label>
+            <input
+              matInput
+              formControlName="quantity"
+              required="true"
+              (keyup)="setQuantity()"
+            />
+            <mat-error
+              *ngIf="
+                orderForm.controls['quantity'].invalid &&
+                orderForm.controls['quantity'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['quantity'].errors &&
+                  orderForm.controls['quantity'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price" required="true" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-2">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label>Total</mat-label>
+            <input matInput formControlName="total" required="true" />
+            <mat-error
+              *ngIf="
+                orderForm.controls['total'].invalid &&
+                orderForm.controls['total'].touched
+              "
+            >
+              <span
+                *ngIf="
+                  orderForm.controls['total'].errors &&
+                  orderForm.controls['total'].errors['required']
+                "
+              >
+                This Field is mendatory.</span
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+    <div class="grid">
+      <div class="col-2" (click)="addToCart()">
+        <button mat-raised-button color="primary" [disabled]="orderForm.controls['product'].invalid || orderForm.controls['category'].invalid">Add</button>
+      </div>
+      <div class="spacer"></div>
+      <div class="col-2">
+        <h3>
+          <b>Sub Total = {{ subTotal | currency }}</b>
+        </h3>
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="mat-elevation-z8" *ngIf="dataSource" align="center">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+        <td mat-cell *matCellDef="let row">{{ row.category }}</td>
+      </ng-container>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+        <td mat-cell *matCellDef="let row">{{ row.quantity }}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+        <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+        <td mat-cell *matCellDef="let row">{{ row.total }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row"><button mat-icon-button color="warn" (click)="deleteFromCart(row.name)"><mat-icon>delete</mat-icon></button></td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

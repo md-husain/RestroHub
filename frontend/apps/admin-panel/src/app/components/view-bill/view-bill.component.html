@@ -1,0 +1,62 @@
+<div class="form">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+      <span class="title-center">Bill Details</span>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+
+<mat-dialog-content *ngIf="bill" class="mat-typography">
+  <div class="grid">
+    <div class="col-6">
+      <h4><b>Name:</b> {{ bill.name }}</h4>
+    </div>
+    <div class="col-6">
+      <h4><b>Email:</b> {{ bill.email }}</h4>
+    </div>
+    <div class="col-6">
+      <h4><b>Phone Number:</b> {{ '+880' + bill.phoneNumber }}</h4>
+    </div>
+    <div class="col-6">
+      <h4><b>Payment Method:</b> {{ bill.paymentMethod }}</h4>
+    </div>
+  </div>
+  <table
+    *ngIf="dataSource"
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    style="width: 100%"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+</mat-dialog-content>

@@ -1,0 +1,16 @@
+.confirmation {
+  .mat-dialog-content {
+    .h5 {
+      font-size: 25px;
+    }
+  }
+  .actions {
+    .mat-dialog-actions {
+      margin: 10px;
+      .mat-raised-button {
+        height: 40px;
+        width: 50px;
+      }
+    }
+  }
+}

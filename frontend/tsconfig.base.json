@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "environments/*": [
+        "apps/admin-panel/src/environments/*"
+      ],
+      "@frontend/bills": ["libs/bills/src/index.ts"],
+      "@frontend/categories": ["libs/categories/src/index.ts"],
+      "@frontend/deshboard": ["libs/deshboard/src/index.ts"],
+      "@frontend/products": ["libs/products/src/index.ts"],
+      "@frontend/users": ["libs/users/src/index.ts"],
+      "@frontend/utilities": ["libs/utilities/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

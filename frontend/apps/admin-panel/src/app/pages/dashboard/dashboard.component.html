@@ -1,0 +1,38 @@
+<div class="deshboard-items" *ngIf="dashboardOverview">
+  <div class="grid">
+    <div class="col-4">
+      <mat-card align="center">
+        <h2 class="title">Total Category</h2>
+        <h1 class="title">
+          {{ dashboardOverview.categoriesCount }}
+        </h1>
+        <a mat-raised-button routerLink="/panel/category" color="primary"
+          >View Category</a
+        >
+      </mat-card>
+    </div>
+    <div class="col-4">
+      <mat-card align="center">
+        <h2 class="title">Total Product</h2>
+        <h1 class="title">
+          {{ dashboardOverview.productsCount }}
+        </h1>
+        <button mat-raised-button color="primary" routerLink="/panel/products">
+          View Product
+        </button>
+      </mat-card>
+    </div>
+    <div class="col-4">
+      <mat-card align="center">
+        <h2 class="title">Total Bill</h2>
+        <h1 class="title">
+          {{ dashboardOverview.billsCount }}
+        </h1>
+
+        <button mat-raised-button color="primary" routerLink="/panel/bills">
+          View Bill
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>

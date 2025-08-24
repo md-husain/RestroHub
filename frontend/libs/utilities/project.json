@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/utilities/src",
+  "prefix": "frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/utilities"],
+      "options": {
+        "jestConfig": "libs/utilities/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/utilities/**/*.ts",
+          "libs/utilities/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

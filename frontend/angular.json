@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "admin-panel": "apps/admin-panel",
+    "admin-panel-e2e": "apps/admin-panel-e2e",
+    "bills": "libs/bills",
+    "categories": "libs/categories",
+    "deshboard": "libs/deshboard",
+    "products": "libs/products",
+    "users": "libs/users",
+    "utilities": "libs/utilities"
+  }
+}

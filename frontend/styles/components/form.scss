@@ -1,0 +1,22 @@
+.form {
+  .mat-toolbar {
+    margin: -24px;
+    width: auto;
+    margin-bottom: 10px;
+    .title-center {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  .actions {
+    .mat-dialog-actions {
+      .mat-raised-button {
+        height: 40px;
+        width: 70px;
+      }
+    }
+  }
+}
