@@ -1,50 +1,93 @@
-# Restaurant Management System
+# Restaurant Management System - Full-Stack Web App
 
-## Technology
+This project is a modern, full-stack web application designed to manage restaurant operations. It provides a comprehensive solution for both restaurant staff and customers, built on the **MEAN stack** (MongoDB, Express, Angular, Node.js) to ensure a responsive and scalable architecture.
 
-<ul>
-<li>Angular</li>
-<li>MongoDB</li>
-<li>NodeJS</li>
-<li>ExpressJS</li>
-</ul>
+---
 
-## PROJECT SETUP
+## 1. Tech Stack
 
-## Local Environment Setup
+### Frontend
+-   **Angular**: A powerful framework for building dynamic single-page applications.
+-   **TypeScript**: A typed superset of JavaScript, enhancing code quality and maintainability.
+-   **SCSS**: A CSS preprocessor for modular and efficient styling.
+-   **Nx**: A monorepo tool that provides a scalable and organized project structure.
 
-- Git
-- Node.js
-- npm
-- PostMan / ThunderClient
-- Visual Studio Code
+### Backend
+-   **Node.js**: The server-side JavaScript runtime.
+-   **Express.js**: A minimalist web framework for building the RESTful API.
+-   **MongoDB**: A flexible NoSQL database for managing data.
 
-> Create a .env file in backend folder and adjust the following environment variables. DONOT include the file in the source control.
+### Tools & Libraries
+-   **JWT (JSON Web Tokens)**: For secure and stateless authentication.
+-   **Git**: For version control.
+-   **Jest & Cypress**: For comprehensive testing.
 
-```bash
-CONNECTION_STRING = <value>
-JWT_TOKEN = <value>
-PORT = <value>
-SALT = <value>
-```
+---
 
-> Create a new folder environment. inside environment folder create two ts file {environment.prod.ts, environment.ts} and adjust the following environment variables. DONOT include the file in the source control.
+## 2. Key Features
 
->> In environment.prod.ts
+-   **User & Product Management**: Complete CRUD (Create, Read, Update, Delete) operations.
+-   **Billing System & Dashboard**: A robust system for handling transactions and viewing analytics.
+-   **JWT Authentication**: Secure user login and protected routes.
+-   **Role-based Access**: Differentiates between admin and customer access.
+-   **Responsive Admin Interface**: A dashboard that adapts to different screen sizes.
 
-```bash
-export const environment = {
-  production: true,
-  apiURL: <value>,
-};
-```
+---
 
->> In environment.ts
+## 3. Technical Highlights
 
-```bash
-export const environment = {
-  production: false,
-  apiURL: <value>,
-};
-```
-> Create a new Database on mongodb and put the CONNECTION_STRING on CONNECTION_STRING
+-   **RESTful APIs**: Developed a set of APIs with Express.js for seamless communication.
+-   **Modular Design**: Created a scalable architecture using Nx for modular components.
+-   **Database Design**: Implemented an efficient MongoDB schema.
+-   **Comprehensive Testing**: Ensured reliability with Jest for unit testing and Cypress for end-to-end testing.
+
+---
+
+## 4. Installation & Setup
+
+To get this project running on your local machine, follow these steps.
+
+### Prerequisites
+-   Node.js (LTS recommended) & npm
+-   Angular CLI (`npm install -g @angular/cli`)
+-   A MongoDB database (local or cloud-hosted)
+
+### Backend Setup
+1.  Navigate to the `backend` folder.
+    ```bash
+    cd backend
+    ```
+2.  Install dependencies.
+    ```bash
+    npm install
+    ```
+3.  Create a `.env` file and add your database URL and JWT secret.
+    ```
+    PORT=3000
+    DATABASE_URL='YOUR_MONGODB_CONNECTION_STRING'
+    JWT_SECRET='A_STRONG_RANDOM_SECRET_KEY'
+    ```
+4.  Start the server.
+    ```bash
+    npm start
+    ```
+
+### Frontend Setup
+1.  Open a **new terminal** and navigate to the `frontend` folder.
+    ```bash
+    cd frontend
+    ```
+2.  Install dependencies.
+    ```bash
+    npm install
+    ```
+3.  Start the Angular app.
+    ```bash
+    ng serve admin-panel
+    ```
+
+---
+
+## 5. License
+
+This project is licensed under the MIT License.
